@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: flux-system
+  name: cluster-settings
+data:
+  DC_UNIFI: 192.168.0.1
+  HOME_UNIFI: 192.168.15.1
+  CLUSTER_LB_NGINX: 103.79.72.0
