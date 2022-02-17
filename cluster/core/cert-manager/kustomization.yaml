@@ -4,3 +4,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - helm-release.yaml
+  - letsencrypt-production.yaml
+  - letsencrypt-staging.yaml
+  - prometheus-rule.yaml
+  - secret.yaml
