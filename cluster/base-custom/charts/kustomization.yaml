@@ -20,6 +20,7 @@ resources:
   - k8s-gateway-charts.yaml
   - kasten-charts.yaml
   - kubernetes-sigs-descheduler-charts.yaml
+  - metallb-charts.yaml
   - node-feature-discovery.yaml
   - prometheus-community-charts.yaml
   - rook-ceph-charts.yaml
