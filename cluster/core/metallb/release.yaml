@@ -1,0 +1,26 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: metallb
+  namespace: metallb-system
+spec:
+  releaseName: metallb
+  chart:
+    spec:
+      chart: metallb
+      sourceRef:
+        kind: HelmRepository
+        name: metallb
+        namespace: flux-system
+  interval: 5m
+  values:
+    configInline:
+      peers:
+        - peer-address: 172.31.0.1
+          peer-asn: 64512
+          my-asn: 64512
+      address-pools:
+        - name: default
+          protocol: bgp
+          addresses:
+            - 103.79.72.0/25
