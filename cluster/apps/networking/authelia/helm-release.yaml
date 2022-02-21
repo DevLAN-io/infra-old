@@ -41,7 +41,7 @@ spec:
 
       env:
         - name: TZ
-          value: Europe/Paris
+          value: Australia/Sydney
 
       extraVolumeMounts:
         - name: config-custom
@@ -125,12 +125,12 @@ spec:
         redis:
           enabled: true
           enabledSecret: true
-          host: redis-master.data.svc.cluster.local
+          host: redis-authelia-master.networking.svc.cluster.local
 
       storage:
         postgres:
           enabled: true
-          host: postgresql-kube.data.svc.cluster.local
+          host: postgres-authelia.networking.svc.cluster.local
 
       notifier:
         smtp:
