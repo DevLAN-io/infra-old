@@ -131,6 +131,8 @@ spec:
         postgres:
           enabled: true
           host: postgres-authelia-postgresql.networking.svc.cluster.local
+          username: postgres
+          database: postgres
 
       notifier:
         smtp:
