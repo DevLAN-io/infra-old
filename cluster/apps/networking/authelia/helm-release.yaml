@@ -130,16 +130,16 @@ spec:
       storage:
         postgres:
           enabled: true
-          host: postgres-authelia.networking.svc.cluster.local
+          host: postgres-authelia-postgresql.networking.svc.cluster.local
 
       notifier:
         smtp:
           enabled: true
           enabledSecret: true
-          host: smtp.fastmail.com
+          host: smtp-relay.sendinblue.com
           port: 587
           username: ${SECRET_AUTHELIA_SMTP_EMAIL}
-          sender: ${SECRET_AUTHELIA_SMTP_EMAIL}
+          sender: ${SECRET_AUTHELIA_SMTP_SENDER}
           identifier: ${SECRET_CLUSTER_DOMAIN}
 
     secret:
