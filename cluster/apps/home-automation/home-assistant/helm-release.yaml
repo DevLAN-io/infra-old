@@ -30,9 +30,6 @@ spec:
       HASS_SECRET_MQTT_USERNAME: ${SECRET_MQTT_USERNAME}
       HASS_SECRET_MQTT_PASSWORD: ${SECRET_MQTT_PASSWORD}
 
-    hostNetwork: true
-    dnsPolicy: ClusterFirstWithHostNet
-
     securityContext:
       privileged: true
 
