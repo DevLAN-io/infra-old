@@ -61,7 +61,7 @@ spec:
         enabled: true
         ingressClassName: "nginx"
         hosts:
-          - host: bookstack.${SECRET_CLUSTER_DOMAIN}
+          - host: wiki.${SECRET_CLUSTER_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
