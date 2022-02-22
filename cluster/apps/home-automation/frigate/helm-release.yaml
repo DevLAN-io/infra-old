@@ -29,6 +29,7 @@ spec:
         enabled: true
         size: 1Gi
         mountPath: /data
+        accessMode: ReadWriteOnce
       cache:
         enabled: true
         type: emptyDir
