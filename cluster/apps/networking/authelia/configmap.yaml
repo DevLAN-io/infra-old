@@ -7,7 +7,7 @@ metadata:
 data:
   users_database.yml: |
     users:
-      Nick:
+      nickp:
         displayname: "Nick"
         password: "${SECRET_AUTHELIA_USER_NICK_PASSWORD}"
         email: ${SECRET_AUTHELIA_USER_NICK_EMAIL}
