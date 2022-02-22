@@ -6,3 +6,4 @@ resources:
   - networking
   - secret-reflector
   - data
+  - home-automation
