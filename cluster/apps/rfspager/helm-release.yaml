@@ -18,6 +18,11 @@ spec:
       interval: 5m
 
   values:
+    autoscaling:
+      enabled: true
+      minReplicas: 3
+      maxReplicas: 15
+
     image:
       repository: docker.io/nick170/rfspager
       tag: main-a1c594b-1645684683
