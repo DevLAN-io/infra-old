@@ -8,13 +8,13 @@
     ":separatePatchReleases",
     "docker:enableMajor",
     ":enablePreCommit",
-    "github>devlan-io/infra//.github/renovate/autoMerge",
-    "github>devlan-io/infra//.github/renovate/labels",
-    "github>devlan-io/infra//.github/renovate/semanticCommits"
+    "github>DevLAN-io/infra//.github/renovate/autoMerge",
+    "github>DevLAN-io/infra//.github/renovate/labels",
+    "github>DevLAN-io/infra//.github/renovate/semanticCommits"
   ],
   "platform": "github",
-  "username": "devlan-io",
-  "repositories": ["devlan-io/infra"],
+  "username": "DevLAN-io",
+  "repositories": ["DevLAN-io/infra"],
   "onboarding": false,
   "requireConfig": false,
   "gitAuthor": "devlan-io [bot] <devlan-io@users.noreply.github.com>",
