@@ -24,30 +24,30 @@ data:
   DB_DATABASE: rfspager
   DB_USERNAME: rfspager
 
-  PASSPORT_CLIENT_ID: 2
+  PASSPORT_CLIENT_ID: "2"
 
   BROADCAST_DRIVER: pusher
   CACHE_DRIVER: redis
   FILESYSTEM_DRIVER: local
   QUEUE_CONNECTION: redis
   SESSION_DRIVER: database
-  SESSION_LIFETIME: 120
+  SESSION_LIFETIME: "120"
 
   MEMCACHED_HOST: 127.0.0.1
 
   REDIS_HOST: redis-master
-  REDIS_DB: 1
-  REDIS_CACHE_DB: 2
-  REDIS_PORT: 6379
+  REDIS_DB: "1"
+  REDIS_CACHE_DB: "2"
+  REDIS_PORT: "6379"
 
   MAIL_MAILER: smtp
   MAIL_HOST: smtp-relay.sendinblue.com
-  MAIL_PORT: 587
+  MAIL_PORT: "587"
   MAIL_USERNAME: nick@npratley.net
   MAIL_FROM_ADDRESS: rfspager@devlan.io
   MAIL_FROM_NAME: RFSPager
 
-  PUSHER_APP_ID: 1
+  PUSHER_APP_ID: "1"
   PUSHER_APP_HOST: ws.devlan.io
 
   FIREBASE_CREDENTIALS: /rfspager-e1e40-firebase-adminsdk-tf6gz-57ef7a0dbf.json
