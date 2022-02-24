@@ -20,7 +20,7 @@ spec:
   values:
     image:
       repository: docker.io/nick170/rfspager
-      tag: main-8c8c5b7-1644025165
+      tag: main-a1c594b-1645684683
 
     envFrom:
       - configMapRef:
