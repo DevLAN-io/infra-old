@@ -1,0 +1,65 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rfspager-config
+  namespace: rfspager
+data:
+  APP_NAME: RFSPager
+  APP_ENV: production
+  APP_DEBUG: false
+  APP_URL: https://rfspager.app
+
+  AWS_ACCESS_KEY_ID: backend
+  AWS_BUCKET: photos
+  AWS_DEFAULT_REGION: default
+  AWS_URL: https://rfspager.app/photos/
+  AWS_ENDPOINT: https://s3.devlan.io
+
+  LOG_CHANNEL: stack
+  LOG_LEVEL: debug
+
+  DB_CONNECTION: pgsql
+  DB_HOST: postgres
+  DB_DATABASE: rfspager
+  DB_USERNAME: rfspager
+
+  PASSPORT_CLIENT_ID: 2
+
+  BROADCAST_DRIVER: pusher
+  CACHE_DRIVER: redis
+  FILESYSTEM_DRIVER: local
+  QUEUE_CONNECTION: redis
+  SESSION_DRIVER: database
+  SESSION_LIFETIME: 120
+
+  MEMCACHED_HOST: 127.0.0.1
+
+  REDIS_HOST: redis-master
+  REDIS_DB: 1
+  REDIS_CACHE_DB: 2
+  REDIS_PORT: 6379
+
+  MAIL_MAILER: smtp
+  MAIL_HOST: smtp-relay.sendinblue.com
+  MAIL_PORT: 587
+  MAIL_USERNAME: nick@npratley.net
+  MAIL_FROM_ADDRESS: rfspager@devlan.io
+  MAIL_FROM_NAME: RFSPager
+
+  PUSHER_APP_ID: 1
+  PUSHER_APP_HOST: ws.devlan.io
+
+  FIREBASE_CREDENTIALS: /rfspager-e1e40-firebase-adminsdk-tf6gz-57ef7a0dbf.json
+
+  APN_KEY_ID: P7WNA87JF9
+  APN_TEAM_ID: W62CSN3S5H
+  APN_BUNDLE_ID: io.devlan.rfspager
+
+  SENTRY_TRACES_SAMPLE_RATE: "0.5"
+
+  FACEBOOK_REDIRECT: https://rfspager-backend.test/auth/facebook/callback
+
+  APPLE_KEY_ID: F7R65U84A6
+  APPLE_TEAM_ID: W62CSN3S5H
+  APPLE_CLIENT_ID: io.devlan.rfspager
