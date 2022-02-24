@@ -20,9 +20,9 @@ data:
   LOG_LEVEL: debug
 
   DB_CONNECTION: pgsql
-  DB_HOST: postgres
-  DB_DATABASE: rfspager
-  DB_USERNAME: rfspager
+  DB_HOST: rfspager-postgresql
+  DB_DATABASE: postgres
+  DB_USERNAME: postgres
 
   PASSPORT_CLIENT_ID: "2"
 
@@ -35,7 +35,7 @@ data:
 
   MEMCACHED_HOST: 127.0.0.1
 
-  REDIS_HOST: redis-master
+  REDIS_HOST: rfspager-redis-master
   REDIS_DB: "1"
   REDIS_CACHE_DB: "2"
   REDIS_PORT: "6379"
