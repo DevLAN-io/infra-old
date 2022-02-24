@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://nicko170.github.io/laravel-charts/
       chart: rfspager
-      version: 1.0.2
+      version: 1.0.4
       sourceRef:
         kind: HelmRepository
         name: nicko170-charts
@@ -26,6 +26,13 @@ spec:
     image:
       repository: docker.io/nick170/rfspager
       tag: main-a1c594b-1645684683
+
+    schedule: "*/1 * * * *"
+    scheduleCommand: /process/cnb/schedule
+
+    workerMin: 3
+    workerMax: 10
+    workerCommand: /process/cnb/worker
 
     envFrom:
       - configMapRef:
