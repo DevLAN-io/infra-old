@@ -18,7 +18,7 @@
   "onboarding": false,
   "requireConfig": false,
   "gitAuthor": "devlan-io [bot] <devlan-io@users.noreply.github.com>",
-  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "dependencyDashboardTitle": "Renovate Dashboard",
   "suppressNotifications": [
     "prIgnoreNotification"
   ],
