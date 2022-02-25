@@ -30,8 +30,7 @@ spec:
     schedule: "*/1 * * * *"
     scheduleCommand: /cnb/process/schedule
 
-    workerMin: 3
-    workerMax: 10
+    workerCount: 10
     workerCommand: /cnb/process/worker
 
     envFrom:
