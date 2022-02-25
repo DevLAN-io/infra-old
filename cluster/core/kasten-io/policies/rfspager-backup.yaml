@@ -1,0 +1,23 @@
+apiVersion: config.kio.kasten.io/v1alpha1
+kind: Policy
+metadata:
+  name: rfspager-backup
+  namespace: kasten-io
+spec:
+  comment: ""
+  frequency: "@hourly"
+  paused: false
+  actions:
+    - action: backup
+  retention:
+    hourly: 24
+    daily: 7
+    weekly: 4
+    monthly: 12
+    yearly: 7
+  selector:
+    matchExpressions:
+      - key: k10.kasten.io/appNamespace
+        operator: In
+        values:
+          - rfspager
