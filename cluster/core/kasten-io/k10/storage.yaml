@@ -4,6 +4,7 @@ kind: PersistentVolume
 metadata:
   name: home-nfs-kasten
 spec:
+  storageClassName: nfs
   capacity:
     storage: 1024Gi
   accessModes:
@@ -22,6 +23,7 @@ metadata:
   name: home-nfs-kasten
   namespace: kasten-io
 spec:
+  storageClassName: nfs
   volumeName: home-nfs-kasten
   accessModes:
     - ReadWriteMany
