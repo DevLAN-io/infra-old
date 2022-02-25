@@ -13,11 +13,11 @@
     "github>DevLAN-io/infra//.github/renovate/semanticCommits"
   ],
   "platform": "github",
-  "username": "DevLAN-io",
+  "username": "DevLAN-io[bot]",
   "repositories": ["DevLAN-io/infra"],
   "onboarding": false,
   "requireConfig": false,
-  "gitAuthor": "devlan-io [bot] <devlan-io@users.noreply.github.com>",
+  "gitAuthor": "DevLAN-io[bot] <172667+DevLAN-io[bot]@users.noreply.github.com>",
   "dependencyDashboardTitle": "Renovate Dashboard",
   "suppressNotifications": [
     "prIgnoreNotification"
