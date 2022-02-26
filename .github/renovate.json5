@@ -12,10 +12,20 @@
     "github>DevLAN-io/infra//.github/renovate/labels",
     "github>DevLAN-io/infra//.github/renovate/semanticCommits"
   ],
-  "detectHostRulesFromEnv": true,
+  hostRules: [
+    {
+      hostType: "docker",
+      username: "nick170",
+      encrypted: {
+        password: "wcFMA/xDdHCJBTolARAAiM6GLd0nUc0RbSlVScww8pWI93aO+I4T1hMLZCcDBdB4+u5qoLoer2pNgXvYH5n9CL+WJhlxTaN4vL92AsE4LSU67Aw2jnFngIAr3jQPgawwdkV+tlHwOMrH9QtSLNEUdau58m/aG1Xbvl+rNn1CMSgKHRZqfszg6fHZ+7HcguSXjKm+TftdbJloHss+Wu2z79MZ6Hus2g5erjh3Bsb036Zo4Rv5aQ+S/mYaGJjSExiOxVEQhTWf/s4tYbBlUitCUDsz/EAqy+tjRmJpCMUCg1XKlTIjLYNLdgxXmtyVj0pDS3qPJ//z0Vat0JO3Tv2086aDKjRhg1SkFLoQ0MlaVMtnBMT8BBsoyYgKcfPOda7xTat8WytUrxekAXFgSRO29Y2FGhHpKfNeDEkQtLWeeZI0wjBSI/7XtyXUWER7ywv/DPBDfgPgUPhCYMGtcy8WqWsTnBBEKSW7jUUcnYJKvwhZe1bZD5sxlGBQYiTOPuqlLCeBMV2EcQxjqz+tkt1z3+uPBGmfaZvY6Ql6pyW/47Y5IedRQghGPIXq9/Rmf/eQE8nafrQ9mwLWo5gyioUG3PfcXpLN8qyt7cNRp+b7NHtdwbGjtdFy2GNlfKGF2bDJYg7L3sk03YyJ0IX1lxVIH6g/d3OhEsvdhVpg5mb+qrzW8ts/WdgeLaHNBK3WAYbSWwEJvn9lwBd6SZiVHAVqpbLS+BPFkuHty47Unc7meIinV2+C7qpsMiD7LxhFCtR8qaYkSRsT25ffgJsXxdIlWm3cIWBZkwiRs5EJDKWIc82ZGVwo7J0sr8fhoLg"
+      }
+    }
+  ],
   "platform": "github",
   "username": "DevLAN-io",
-  "repositories": ["DevLAN-io/infra"],
+  "repositories": [
+    "DevLAN-io/infra"
+  ],
   "onboarding": false,
   "requireConfig": false,
   "gitAuthor": "DevLAN-io[bot] <172667+DevLAN-io[bot]@users.noreply.github.com>",
@@ -64,14 +74,14 @@
         "cluster/base-custom/crds/cert-manager/.+\\.yaml$"
       ],
       "matchStrings": [
-        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n.*\\/(?<currentValue>.*?)\\/",
+        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n.*\\/(?<currentValue>.*?)\\/"
       ],
       "datasourceTemplate": "helm"
     },
     // regexManager to read and process External Snapshotter CRDs
     {
       "fileMatch": [
-        "cluster/crds/external-snapshotter/.+\\.yaml$",
+        "cluster/crds/external-snapshotter/.+\\.yaml$"
       ],
       "matchStrings": [
         "datasource=(?<datasource>.*?)\n *url: https:\/\/github\\.com\/(?<depName>.*?)\\.git\n *ref:\n *tag: (?<currentValue>.*)\n"
@@ -94,9 +104,9 @@
         "cluster/base-custom/crds/rook-ceph/.+\\.yaml$"
       ],
       "matchStrings": [
-        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: (?<currentValue>.*)\n",
+        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: (?<currentValue>.*)\n"
       ],
-      "datasourceTemplate": "helm",
+      "datasourceTemplate": "helm"
     }
   ],
   "packageRules": [
@@ -155,7 +165,9 @@
         "docker"
       ],
       "versioning": "regex:^version-(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$",
-      "matchPackageNames": ["ghcr.io/linuxserver/resilio-sync"]
+      "matchPackageNames": [
+        "ghcr.io/linuxserver/resilio-sync"
+      ]
     },
     // group packages
     {
