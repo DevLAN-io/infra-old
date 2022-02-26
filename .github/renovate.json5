@@ -12,6 +12,7 @@
     "github>DevLAN-io/infra//.github/renovate/labels",
     "github>DevLAN-io/infra//.github/renovate/semanticCommits"
   ],
+  "detectHostRulesFromEnv": true,
   "platform": "github",
   "username": "DevLAN-io",
   "repositories": ["DevLAN-io/infra"],
