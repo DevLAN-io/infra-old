@@ -7,7 +7,6 @@
     ":separatePatchReleases",
     "docker:enableMajor",
     ":enablePreCommit",
-    "github>DevLAN-io/infra//.github/renovate/autoMerge",
     "github>DevLAN-io/infra//.github/renovate/labels",
     "github>DevLAN-io/infra//.github/renovate/semanticCommits"
   ],
@@ -108,8 +107,17 @@
       "datasourceTemplate": "helm"
     }
   ],
+
   "packageRules": [
-    // setup datasources
+    {
+      matchUpdateTypes: [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      automerge: true
+    },
     {
       "matchDatasources": [
         "helm"
