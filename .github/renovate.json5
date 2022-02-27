@@ -4,7 +4,6 @@
     "config:base",
     ":disableRateLimiting",
     ":dependencyDashboard",
-    ":semanticCommits",
     ":separatePatchReleases",
     "docker:enableMajor",
     ":enablePreCommit",
