@@ -4,7 +4,6 @@
     "config:base",
     ":disableRateLimiting",
     ":dependencyDashboard",
-    ":separatePatchReleases",
     "docker:enableMajor",
     ":enablePreCommit",
     "github>DevLAN-io/infra//.github/renovate/labels",
