@@ -7,3 +7,4 @@ resources:
   - kured
   - node-feature-discovery
   - reloader
+  - stash
