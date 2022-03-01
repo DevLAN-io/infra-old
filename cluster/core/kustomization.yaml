@@ -6,4 +6,3 @@ resources:
   - kube-system
   - flux-system
   - metallb
-  - stash
