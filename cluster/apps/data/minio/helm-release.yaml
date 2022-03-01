@@ -17,6 +17,9 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    resources:
+      requests:
+        memory: 4Gi
 
     mode: standalone
 
