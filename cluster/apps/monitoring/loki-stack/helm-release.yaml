@@ -127,5 +127,5 @@ spec:
         type: LoadBalancer
         port: 1514
         externalIPs:
-          - ${CLUSTER_LB_LOKI_SYSLOG}
+          - 172.31.0.3
         externalTrafficPolicy: Local

@@ -7,6 +7,7 @@ spec:
   releaseName: metallb
   chart:
     spec:
+      # renovate: registryUrl=https://metallb.github.io/metallb
       chart: metallb
       sourceRef:
         kind: HelmRepository
@@ -24,3 +25,7 @@ spec:
           protocol: bgp
           addresses:
             - 103.79.72.0/25
+        - name: l2
+          protocol: layer2
+          addresses:
+            - 173.31.0.3/32
