@@ -59,8 +59,8 @@ spec:
               args:
                 - local
                 - export
-                - --host rfspager-postgresql
-                - --port 5432
-                - --databases postgres
-                - --username postgres
-                - --password "${RFSPAGER_DB_PASSWORD}"
+                - --host=rfspager-postgresql
+                - --port=5432
+                - --databases=postgres
+                - --username=postgres
+                - --password=${RFSPAGER_DB_PASSWORD}
