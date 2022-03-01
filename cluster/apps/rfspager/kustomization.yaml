@@ -7,4 +7,4 @@ resources:
   - secrets.yaml
   - regcred.yaml
   - helm-release.yaml
-  - stash
+  - backup.yaml

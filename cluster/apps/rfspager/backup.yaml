@@ -1,0 +1,77 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: home-nfs-rfspager
+spec:
+  storageClassName: nfs
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+    - hard
+    - nfsvers=4.1
+  nfs:
+    path: /volume1/rfspager-backup
+    server: "${HOME_NFS}"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: home-nfs-rfspager
+  namespace: rfspager
+spec:
+  storageClassName: nfs
+  volumeName: home-nfs-rfspager
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: database-backup-job
+  namespace: rfspager
+spec:
+  schedule: "0 0 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          volumes:
+            - name: backup-data
+              persistentVolumeClaim:
+                claimName: home-nfs-rfspager
+
+          containers:
+            - name: db-backup
+              image: "ghcr.io/omegion/db-backup:v0.9.0"
+              imagePullPolicy: IfNotPresent
+              workingDir: /data
+              volumeMounts:
+                - mountPath: /data/postgres
+                  name: backup-data
+              args:
+                - local
+                - export
+                - --host=$DB_HOST
+                - --port=$DB_PORT
+                - --databases=$DATABASE_NAMES
+                - --username=$DB_USER
+                - --password=$DB_PASS
+              env:
+                - name: DB_HOST
+                  value: "rfspager-postgresql"
+                - name: DB_PORT
+                  value: "5432"
+                - name: DB_USER
+                  value: "postgres"
+                - name: DB_PASS
+                  value: "${RFSPAGER_DB_PASSWORD}"
+                - name: DATABASE_NAMES
+                  value: "postgres"
