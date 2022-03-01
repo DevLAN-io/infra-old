@@ -52,26 +52,15 @@ spec:
             - name: db-backup
               image: "ghcr.io/omegion/db-backup:v0.9.0"
               imagePullPolicy: IfNotPresent
-              workingDir: /data
+              workingDir: /data/postgres
               volumeMounts:
-                - mountPath: /data/postgres
+                - mountPath: /data
                   name: backup-data
               args:
                 - local
                 - export
-                - --host=$DB_HOST
-                - --port=$DB_PORT
-                - --databases=$DATABASE_NAMES
-                - --username=$DB_USER
-                - --password=$DB_PASS
-              env:
-                - name: DB_HOST
-                  value: "rfspager-postgresql"
-                - name: DB_PORT
-                  value: "5432"
-                - name: DB_USER
-                  value: "postgres"
-                - name: DB_PASS
-                  value: "${RFSPAGER_DB_PASSWORD}"
-                - name: DATABASE_NAMES
-                  value: "postgres"
+                - --host=rfspager-postgresql
+                - --port=5432
+                - --databases=postgres
+                - --username=postgres
+                - --password="${RFSPAGER_DB_PASSWORD}"
