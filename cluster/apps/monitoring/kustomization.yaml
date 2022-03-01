@@ -7,4 +7,5 @@ resources:
   - healthchecks
   - kube-prometheus-stack
   - thanos
+  - loki-stack
   - uptime-kuma
