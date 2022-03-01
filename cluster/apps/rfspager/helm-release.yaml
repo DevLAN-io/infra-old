@@ -52,14 +52,14 @@ spec:
         ingressClassName: "nginx"
 
         hosts:
-          - host: "rfspager.${SECRET_CLUSTER_DOMAIN}"
+          - host: "${RFSPAGER_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "rfspager.${SECRET_CLUSTER_DOMAIN}"
-            secretName: "${SECRET_CLUSTER_CERTIFICATE_DEFAULT}"
+              - "${RFSPAGER_DOMAIN}"
+            secretName: "${RFSPAGER_DOMAIN}"
 
     postgresql:
       enabled: true
