@@ -59,7 +59,7 @@ spec:
         tls:
           - hosts:
               - "${RFSPAGER_DOMAIN}"
-            secretName: "${RFSPAGER_DOMAIN}"
+            secretName: cert-"${RFSPAGER_DOMAIN}"
 
     postgresql:
       enabled: true

@@ -2,14 +2,14 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: "${RFSPAGER_DOMAIN}"
+  name: cert-${RFSPAGER_DOMAIN}
   namespace: networking
 spec:
-  secretName: "${RFSPAGER_DOMAIN}"
+  secretName: cert-${RFSPAGER_DOMAIN}
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
-  commonName: "${RFSPAGER_DOMAIN}"
+  commonName: ${RFSPAGER_DOMAIN}
   dnsNames:
-    - "${RFSPAGER_DOMAIN}"
+    - ${RFSPAGER_DOMAIN}
     - "*.${RFSPAGER_DOMAIN}"

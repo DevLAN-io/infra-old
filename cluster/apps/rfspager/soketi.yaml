@@ -6,6 +6,10 @@ metadata:
   namespace: rfspager
   labels:
     app: soketi
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/path: "/usage"
+    prometheus.io/port: "9601"
 spec:
   replicas: 1
   selector:
@@ -26,6 +30,8 @@ spec:
           ports:
             - containerPort: 6001
               name: ws
+            - containerPort: 9601
+              name: usage
             - containerPort: 11002
               name: cluster
           volumeMounts:
@@ -56,13 +62,13 @@ kind: Ingress
 metadata:
   name: soketi
   namespace: rfspager
-
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
         - ws.${RFSPAGER_DOMAIN}
-      secretName: ${RFSPAGER_DOMAIN}
+      secretName: cert-${RFSPAGER_DOMAIN}
+
   rules:
     - host: ws.${RFSPAGER_DOMAIN}
       http:
