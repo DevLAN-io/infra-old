@@ -28,6 +28,8 @@ resources:
   - prometheus-community-charts.yaml
   - rook-ceph-charts.yaml
   - runix-charts.yaml
+  - sentry-charts.yaml
+  - soketi-charts.yaml
   - stakater-charts.yaml
   - traefik-charts.yaml
   - twuni-charts.yaml

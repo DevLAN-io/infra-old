@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: soketi-charts
+  namespace: flux-system
+spec:
+  interval: 1h
+  url: https://helm.soketi.app
+  timeout: 3m
