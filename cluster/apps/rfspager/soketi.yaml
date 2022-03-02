@@ -6,10 +6,7 @@ metadata:
   namespace: rfspager
   labels:
     app: soketi
-  annotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/path: "/usage"
-    prometheus.io/port: "9601"
+
 spec:
   replicas: 1
   selector:
@@ -19,6 +16,10 @@ spec:
     metadata:
       labels:
         app: soketi
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/usage"
+        prometheus.io/port: "9601"
     spec:
       volumes:
         - name: socketi-config
