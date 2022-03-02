@@ -1,0 +1,15 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: soketi
+  namespace: rfspager
+  labels:
+    app: soketi
+spec:
+  selector:
+    matchLabels:
+      app: soketi
+  endpoints:
+    - port: metrics
+      path: /metrics

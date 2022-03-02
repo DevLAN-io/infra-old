@@ -12,3 +12,4 @@ resources:
   - soketi-config.yaml
   - soketi.yaml
   - backup.yaml
+  - monitoring.yaml

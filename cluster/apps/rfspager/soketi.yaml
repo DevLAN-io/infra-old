@@ -16,10 +16,7 @@ spec:
     metadata:
       labels:
         app: soketi
-      annotations:
-        prometheus.io/scrape: "true"
-        prometheus.io/path: "/usage"
-        prometheus.io/port: "9601"
+
     spec:
       volumes:
         - name: socketi-config
@@ -32,7 +29,7 @@ spec:
             - containerPort: 6001
               name: ws
             - containerPort: 9601
-              name: usage
+              name: metrics
             - containerPort: 11002
               name: cluster
           volumeMounts:
@@ -49,6 +46,8 @@ kind: Service
 metadata:
   name: soketi
   namespace: rfspager
+  labels:
+    app: soketi
 spec:
   selector:
     app: soketi
@@ -57,6 +56,11 @@ spec:
       port: 6001
       targetPort: 6001
       name: ws
+    - protocol: TCP
+      port: 9601
+      targetPort: 9601
+      name: metrics
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
