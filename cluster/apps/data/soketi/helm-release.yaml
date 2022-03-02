@@ -18,12 +18,29 @@ spec:
       interval: 5m
 
   values:
+    extraVolumes:
+      - name: config
+        secret:
+          secretName: soketi-config
+
+    app:
+      extraVolumeMounts:
+        - name: config
+          mountPath: /etc/soketi
+
+      command:
+        - node
+        - --max-old-space-size=256
+        - --max_old_space_size=256
+        - --optimize_for_size
+        - --optimize-for-size
+        - /app/bin/server.js
+        - start
+        - --config=/etc/soketi/config.json
+
     replicaCount: 1
     strategy:
       type: RollingUpdate
-
-    networkWatcher:
-      enabled: true
 
     ingress:
       enabled: true
