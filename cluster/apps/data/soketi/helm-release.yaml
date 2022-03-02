@@ -18,6 +18,9 @@ spec:
       interval: 5m
 
   values:
+    networkWatcher:
+      enabled: true
+
     extraVolumes:
       - name: config
         secret:
