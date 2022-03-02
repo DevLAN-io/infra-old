@@ -1,0 +1,74 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: soketi
+  labels:
+    app: soketi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: soketi
+  template:
+    metadata:
+      labels:
+        app: soketi
+    spec:
+      volumes:
+        - name: socketi-config
+          secret:
+            secretName: soketi-secrets
+      containers:
+        - name: soketi
+          image: soketi/soketi:0.29-16-alpine
+          ports:
+            - containerPort: 6001
+              name: ws
+            - containerPort: 11002
+              name: cluster
+          volumeMounts:
+            - mountPath: /etc/socketi
+              name: socketi-config
+          envFrom:
+            - secretRef:
+                name: soketi-secrets
+            - configMapRef:
+                name: soketi-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: soketi
+spec:
+  selector:
+    app: soketi
+  ports:
+    - protocol: TCP
+      port: 6001
+      targetPort: 6001
+      name: ws
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: soketi
+  namespace: rfspager
+
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - ws.${RFSPAGER_DOMAIN}
+      secretName: ${RFSPAGER_DOMAIN}
+  rules:
+    - host: ws.${RFSPAGER_DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: soketi
+                port:
+                  name: ws
