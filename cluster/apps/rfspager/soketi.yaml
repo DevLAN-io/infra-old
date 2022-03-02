@@ -67,11 +67,11 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - ws.${RFSPAGER_DOMAIN}
+        - "ws.${RFSPAGER_DOMAIN}"
       secretName: cert-${RFSPAGER_DOMAIN}
 
   rules:
-    - host: ws.${RFSPAGER_DOMAIN}
+    - host: "ws.${RFSPAGER_DOMAIN}"
       http:
         paths:
           - path: /
