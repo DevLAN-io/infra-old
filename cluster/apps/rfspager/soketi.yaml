@@ -27,7 +27,7 @@ spec:
             secretName: soketi-secrets
       containers:
         - name: soketi
-          image: quay.io/soketi/soketi:0.29-16-alpine
+          image: quay.io/soketi/soketi:0.31-16-alpine
           ports:
             - containerPort: 6001
               name: ws
