@@ -49,7 +49,7 @@ data:
   MAIL_FROM_NAME: RFSPager
 
   PUSHER_APP_ID: "1"
-  PUSHER_APP_HOST: ws.devlan.io
+  PUSHER_APP_HOST: ws.${RFSPAGER_DOMAIN}
 
   FIREBASE_CREDENTIALS: /rfspager-e1e40-firebase-adminsdk-tf6gz-57ef7a0dbf.json
 
