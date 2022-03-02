@@ -20,7 +20,8 @@ spec:
   values:
     app:
       extraEnv:
-        SOKETI_DEBUG: 1
+        - name: SOKETI_DEBUG
+          value: "1"
 
     replicaCount: 1
     strategy:
