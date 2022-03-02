@@ -19,6 +19,10 @@ spec:
   values:
 
     controller:
+      podAnnotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '10254'
+
       replicaCount: 2
       service:
         type: LoadBalancer
