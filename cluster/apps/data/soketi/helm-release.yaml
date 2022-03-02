@@ -31,9 +31,10 @@ spec:
     ingress:
       enabled: true
       class: "nginx"
-      path: /
       hosts:
-        - ws.${RFSPAGER_DOMAIN}
+        - host: ws.${RFSPAGER_DOMAIN}
+          paths:
+            - /
 
       tls:
         - hosts:
