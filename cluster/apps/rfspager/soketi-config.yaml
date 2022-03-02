@@ -5,5 +5,5 @@ metadata:
   namespace: rfspager
 data:
   PORT: "6001"
-  METRICS_SERVER_PORT: 9601
-  METRICS_ENABLED: true
+  METRICS_SERVER_PORT: "9601"
+  METRICS_ENABLED: "true"
