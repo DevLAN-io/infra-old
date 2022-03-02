@@ -18,24 +18,15 @@ spec:
       interval: 5m
 
   values:
-    replicaCount: 3
+    app:
+      SOKETI_DEBUG: "1"
+
+    replicaCount: 1
     strategy:
       type: RollingUpdate
 
     networkWatcher:
       enabled: true
-
-    autoscaling:
-      enabled: false
-      minReplicas: 3
-      maxReplicas: 10
-      targetCPUUtilizationPercentage: 80
-      targetMemoryUtilizationPercentage: 75
-      behavior:
-        scaleDown:
-          stabilizationWindowSeconds: 1800
-        scaleUp:
-          stabilizationWindowSeconds: 10
 
     ingress:
       enabled: true
