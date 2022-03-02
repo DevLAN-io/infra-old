@@ -19,7 +19,8 @@ spec:
 
   values:
     app:
-      SOKETI_DEBUG: "1"
+      extraEnv:
+        SOKETI_DEBUG: 1
 
     replicaCount: 1
     strategy:
