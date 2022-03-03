@@ -4,6 +4,11 @@ metadata:
   name: soketi-config
   namespace: rfspager
 data:
+  ADAPTER_DRIVER: redis
+  CLUSTER_HOST: soketi-cluster-headless
+  DB_REDIS_HOST: rfspager-redis-master
+  DB_REDIS_PORT: "6379"
+  DB_REDIS_DB: "30"
   PORT: "6001"
   METRICS_SERVER_PORT: "9601"
   METRICS_ENABLED: "true"

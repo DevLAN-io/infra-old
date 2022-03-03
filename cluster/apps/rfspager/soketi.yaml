@@ -8,7 +8,7 @@ metadata:
     app: soketi
 
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: soketi
@@ -32,6 +32,9 @@ spec:
               name: metrics
             - containerPort: 11002
               name: cluster
+            - containerPort: 11002
+              name: cluster
+              protocol: UDP
           volumeMounts:
             - mountPath: /etc/socketi
               name: socketi-config
@@ -60,6 +63,42 @@ spec:
       port: 9601
       targetPort: 9601
       name: metrics
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: soketi-cluster
+  namespace: rfspager
+  labels:
+    app: soketi
+spec:
+  type: ClusterIP
+  ports:
+    - port: 11002
+      targetPort: 11002
+      protocol: UDP
+      name: cluster
+  selector:
+    app: soketi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: soketi-cluster-headless
+  namespace: rfspager
+  labels:
+    app: soketi
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+    - port: 11002
+      targetPort: 11002
+      protocol: UDP
+      name: cluster
+  selector:
+    app: soketi
 
 ---
 apiVersion: networking.k8s.io/v1
