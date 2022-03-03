@@ -32,8 +32,6 @@ spec:
               name: metrics
             - containerPort: 11002
               name: cluster
-            - containerPort: 11002
-              name: cluster
               protocol: UDP
           volumeMounts:
             - mountPath: /etc/socketi
