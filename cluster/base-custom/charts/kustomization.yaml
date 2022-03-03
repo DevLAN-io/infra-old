@@ -23,6 +23,7 @@ resources:
   - kubernetes-sigs-descheduler-charts.yaml
   - metallb-charts.yaml
   - minio-charts.yaml
+  - netmaker-charts.yaml
   - nicko170-charts.yaml
   - node-feature-discovery.yaml
   - prometheus-community-charts.yaml

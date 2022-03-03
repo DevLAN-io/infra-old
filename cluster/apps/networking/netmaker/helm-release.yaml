@@ -1,0 +1,34 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: netmaker
+  namespace: networking
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://gravitl.github.io/netmaker-helm/
+      chart: netmaker
+      version: 0.1.0
+      sourceRef:
+        kind: HelmRepository
+        name: netmaker-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    baseDomain: nm.${SECRET_CLUSTER_DOMAIN}
+    wireguard:
+      kernel: true
+    replicas: 3
+    ingress:
+      enabled: true
+      className: nginx
+      tls:
+        issuerName: letsencrypt-production
+    dns:
+      enabled: false
+
+    postgresql-ha:
+      postgresql:
+        replicaCount: 2
