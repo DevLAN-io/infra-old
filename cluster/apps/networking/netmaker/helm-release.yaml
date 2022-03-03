@@ -19,7 +19,8 @@ spec:
   values:
     baseDomain: nm.${SECRET_CLUSTER_DOMAIN}
     wireguard:
-      kernel: true
+      kernel: false
+
     replicas: 3
     ingress:
       enabled: true
