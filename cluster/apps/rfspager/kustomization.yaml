@@ -9,4 +9,3 @@ resources:
   - regcred.yaml
   - helm-release.yaml
   - backup.yaml
-  - monitoring.yaml
