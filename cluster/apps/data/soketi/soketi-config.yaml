@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: soketi-config
-  namespace: rfspager
+  namespace: data
 data:
   ADAPTER_DRIVER: redis
   CLUSTER_HOST: soketi-cluster-headless

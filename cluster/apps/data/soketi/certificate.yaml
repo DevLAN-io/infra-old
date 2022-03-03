@@ -1,0 +1,14 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert-ws.${RFSPAGER_DOMAIN}
+  namespace: data
+spec:
+  secretName: cert-ws.${RFSPAGER_DOMAIN}
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: ws.${RFSPAGER_DOMAIN}
+  dnsNames:
+    - "ws.${RFSPAGER_DOMAIN}"
