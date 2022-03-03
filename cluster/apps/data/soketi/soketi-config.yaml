@@ -5,6 +5,8 @@ metadata:
   namespace: data
 data:
   ADAPTER_DRIVER: redis
+  CLUSTER_HOST: soketi-cluster
+  CLUSTER_PORT: "11002"
   DB_REDIS_HOST: soketi-redis-master
   DB_REDIS_PORT: "6379"
   DB_REDIS_DB: "1"
@@ -12,4 +14,3 @@ data:
   PORT: "6001"
   METRICS_SERVER_PORT: "9601"
   METRICS_ENABLED: "true"
-  QUEUE_DRIVER: redis

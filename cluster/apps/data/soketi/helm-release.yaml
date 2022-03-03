@@ -37,7 +37,7 @@ spec:
         - /app/bin/server.js
         - start
 
-    replicaCount: 3
+    replicaCount: 1
     strategy:
       type: RollingUpdate
 
