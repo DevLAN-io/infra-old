@@ -4,7 +4,7 @@ metadata:
   name: soketi-config
   namespace: data
 data:
-  ADAPTER_DRIVER: redis
+  ADAPTER_DRIVER: cluster
   CLUSTER_HOST: soketi-cluster
   CLUSTER_PORT: "11002"
   DB_REDIS_HOST: soketi-redis-master
