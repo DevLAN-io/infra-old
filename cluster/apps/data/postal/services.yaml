@@ -24,6 +24,7 @@ spec:
   ports:
     - port: 80
       targetPort: 5000
+      name: http
   selector:
     process_type: postal-web
 ---
