@@ -49,6 +49,7 @@ data:
     rabbitmq:
       # Specify connection details for your RabbitMQ server
       host: postal-rabbitmq
+      username: postal
       password: ${SECRET_POSTAL_RABBITMQ_PASS}
       vhost: postal
 

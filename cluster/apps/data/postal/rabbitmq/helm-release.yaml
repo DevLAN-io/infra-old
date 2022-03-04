@@ -28,5 +28,12 @@ spec:
       size: 2Gi
 
     auth:
+      username: postal
       password: "${SECRET_POSTAL_RABBITMQ_PASS}"
       erlangCookie: "${SECRET_POSTAL_RABBITMQ_ERLANG}"
+
+    extraConfiguration: |-
+      default_vhost = postal
+      default_permissions.configure = .*
+      default_permissions.read = .*
+      default_permissions.write = .*
