@@ -20,7 +20,7 @@ spec:
     image:
       registry: docker.io
       repository: bitnami/mariadb
-      tag: 10.5.15-debian-10-r11
+      tag: 10.6.7-debian-10-r11
       pullPolicy: IfNotPresent
 
     primary:
