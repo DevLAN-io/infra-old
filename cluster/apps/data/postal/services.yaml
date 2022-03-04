@@ -37,6 +37,9 @@ apiVersion: networking.k8s.io/v1
 metadata:
   name: postal-web
   namespace: data
+  annotations:
+    nginx.ingress.kubernetes.io/auth-url: "http://authelia.networking.svc.cluster.local/api/verify"
+    nginx.ingress.kubernetes.io/auth-signin: "https://login.${SECRET_CLUSTER_DOMAIN}"
 spec:
   ingressClassName: nginx
   rules:
