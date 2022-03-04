@@ -4,6 +4,9 @@ metadata:
   name: postal-config
   namespace: data
 data:
+  signing.key: |-2
+    ${SECRET_POSTAL_SIGNING_KEY}
+
   postal.yml: |-
     web:
       host: postal.${SECRET_CLUSTER_DOMAIN}

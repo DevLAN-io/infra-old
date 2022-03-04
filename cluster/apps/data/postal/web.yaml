@@ -18,11 +18,8 @@ spec:
           image: ghcr.io/postalserver/postal:2.1.1
           imagePullPolicy: IfNotPresent
           command:
-            - bundle
-            - exec
-            - puma
-            - -C
-            - config/puma.rb
+            - postal
+            - web-server
           ports:
             - containerPort: 5000
               name: web

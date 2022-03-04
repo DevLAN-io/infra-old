@@ -19,10 +19,8 @@ spec:
           image: ghcr.io/postalserver/postal:2.1.1
           imagePullPolicy: IfNotPresent
           command:
-            - bundle
-            - exec
-            - rake
-            - postal:cron
+            - postal
+            - cron
           volumeMounts:
             - name: config
               mountPath: /config
