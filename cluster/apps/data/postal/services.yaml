@@ -1,0 +1,49 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: smtp
+  namespace: data
+  annotations:
+    metallb.universe.tf/allow-shared-ip: key-to-share-${CLUSTER_LB_NGINX}
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  ports:
+    - port: 25
+      targetPort: 25
+  selector:
+    process_type: postal-smtp
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: postal-web
+  namespace: data
+spec:
+  ports:
+    - port: 80
+      targetPort: 5000
+  selector:
+    process_type: postal-web
+---
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: postal-web
+  namespace: data
+spec:
+  rules:
+    - host: postal.${SECRET_CLUSTER_DOMAIN}
+      http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: postal-web
+                port:
+                  name: http
+  tls:
+    - hosts:
+        - postal.${SECRET_CLUSTER_DOMAIN}
+      secretName: "${SECRET_CLUSTER_CERTIFICATE_DEFAULT}"

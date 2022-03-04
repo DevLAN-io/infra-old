@@ -10,3 +10,4 @@ resources:
   - smtp.yaml
   - web.yaml
   - worker.yaml
+  - services.yaml
