@@ -45,7 +45,7 @@ spec:
               service:
                 name: postal-web
                 port:
-                  name: http
+                  number: 80
   tls:
     - hosts:
         - postal.${SECRET_CLUSTER_DOMAIN}
