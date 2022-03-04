@@ -6,3 +6,7 @@ resources:
   - rabbitmq
   - config.yaml
   - cron.yaml
+  - requeuer.yaml
+  - smtp.yaml
+  - web.yaml
+  - worker.yaml

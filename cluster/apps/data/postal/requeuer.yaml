@@ -1,0 +1,31 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: postal-requeuer
+spec:
+  selector:
+    matchLabels:
+      process_type: postal-requeuer
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        process_type: postal-requeuer
+    spec:
+      containers:
+        - name: postal-requeuer
+          image: ghcr.io/postalserver/postal:2.1.1
+          imagePullPolicy: IfNotPresent
+          command:
+            - bundle
+            - exec
+            - rake
+            - postal:requeuer
+          volumeMounts:
+            - name: config
+              mountPath: /opt/postal/config
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: postal-config

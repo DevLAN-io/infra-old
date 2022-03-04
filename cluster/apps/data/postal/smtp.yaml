@@ -1,0 +1,44 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: postal-smtp
+spec:
+  selector:
+    matchLabels:
+      process_type: postal-smtp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        process_type: postal-smtp
+    spec:
+      containers:
+        - name: postal-smtp
+          image: ghcr.io/postalserver/postal:2.1.1
+          imagePullPolicy: IfNotPresent
+          command:
+            - bundle
+            - exec
+            - rake
+            - postal:smtp_server
+          ports:
+            - containerPort: 2525
+              name: smtp
+          livenessProbe:
+            tcpSocket:
+              port: 2525
+            periodSeconds: 15
+            initialDelaySeconds: 5
+          readinessProbe:
+            tcpSocket:
+              port: 2525
+            periodSeconds: 15
+            initialDelaySeconds: 5
+          volumeMounts:
+            - name: config
+              mountPath: /opt/postal/config
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: postal-config
