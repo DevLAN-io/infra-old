@@ -34,6 +34,7 @@ metadata:
   name: postal-web
   namespace: data
 spec:
+  ingressClassName: nginx
   rules:
     - host: postal.${SECRET_CLUSTER_DOMAIN}
       http:
