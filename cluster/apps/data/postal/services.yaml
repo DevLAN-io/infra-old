@@ -2,7 +2,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: smtp
+  name: postal-smtp
   namespace: data
   annotations:
     metallb.universe.tf/allow-shared-ip: key-to-share-${CLUSTER_LB_SMTP}
