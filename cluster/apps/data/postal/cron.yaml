@@ -1,0 +1,33 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: postal-cron
+  namespace: data
+spec:
+  selector:
+    matchLabels:
+      process_type: postal-cron
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        process_type: postal-cron
+    spec:
+      containers:
+        - name: cron
+          image: ghcr.io/postalserver/postal:2.1.1
+          imagePullPolicy: IfNotPresent
+          command:
+            - bundle
+            - exec
+            - rake
+            - postal:cron
+          volumeMounts:
+            - name: config
+              mountPath: /opt/postal/config
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: postal-config
