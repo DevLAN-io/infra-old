@@ -10,8 +10,6 @@ metadata:
 spec:
   type: LoadBalancer
   loadBalancerIP: ${CLUSTER_LB_NGINX}
-  externalIPs:
-    - ${CLUSTER_LB_NGINX}
   ports:
     - port: 25
       targetPort: 25
