@@ -12,7 +12,9 @@ spec:
   loadBalancerIP: ${CLUSTER_LB_SMTP}
   ports:
     - port: 25
-      targetPort: 25
+      targetPort: 2525
+    - port: 2525
+      targetPort: 2525
   selector:
     process_type: postal-smtp
 ---
