@@ -5,11 +5,11 @@ metadata:
   name: postal-smtp
   namespace: data
   annotations:
-    metallb.universe.tf/allow-shared-ip: key-to-share-${CLUSTER_LB_SMTP}
+    metallb.universe.tf/allow-shared-ip: key-to-share-${CLUSTER_LB_NGINX}
     metallb.universe.tf/address-pool: default
 spec:
   type: LoadBalancer
-  loadBalancerIP: ${CLUSTER_LB_SMTP}
+  loadBalancerIP: ${CLUSTER_LB_NGINX}
   ports:
     - port: 25
       targetPort: 2525
