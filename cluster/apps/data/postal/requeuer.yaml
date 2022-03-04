@@ -23,7 +23,7 @@ spec:
             - postal:requeuer
           volumeMounts:
             - name: config
-              mountPath: /opt/postal/config
+              mountPath: /config
               readOnly: true
       volumes:
         - name: config
