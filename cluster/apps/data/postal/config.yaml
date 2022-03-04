@@ -33,7 +33,7 @@ data:
 
     main_db:
       # Specify the connection details for your MySQL database
-      host: postal-mariadb
+      host: postal-mysql
       username: postal
       password: ${SECRET_POSTAL_MARIADB_PASS}
       database: postal
@@ -41,7 +41,7 @@ data:
     message_db:
       # Specify the connection details for your MySQL server that will be house the
       # message databases for mail servers.
-      host: postal-mariadb
+      host: postal-mysql
       username: root
       password: ${SECRET_POSTAL_MARIADB_PASS}
       prefix: postal
