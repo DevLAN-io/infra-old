@@ -34,7 +34,7 @@ data:
     main_db:
       # Specify the connection details for your MySQL database
       host: postal-mariadb
-      username: root
+      username: postal
       password: ${SECRET_POSTAL_MARIADB_PASS}
       database: postal
 
@@ -48,7 +48,7 @@ data:
 
     rabbitmq:
       # Specify connection details for your RabbitMQ server
-      host: postal-rabbitmq
+      host: postal-rabbitmq-headless
       username: postal
       password: ${SECRET_POSTAL_RABBITMQ_PASS}
       vhost: postal
