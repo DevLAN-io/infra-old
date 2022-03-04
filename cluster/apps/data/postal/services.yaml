@@ -13,8 +13,10 @@ spec:
   ports:
     - port: 25
       targetPort: 2525
+      name: smtp1
     - port: 2525
       targetPort: 2525
+      name: smtp2
   selector:
     process_type: postal-smtp
 ---
