@@ -27,7 +27,7 @@ data:
       ssl_port: 5002
       proxy_protocol: false
     main_db:
-      host: mariadb
+      host: postal-mariadb
       port: 3306
       username: postal
       password: ${SECRET_POSTAL_MARIADB_PASS}
@@ -41,13 +41,13 @@ data:
         host: gelf.graylog
         port: 12201
     message_db:
-      host: mariadb
+      host: postal-mariadb
       port: 3306
       username: root
       password: ${SECRET_POSTAL_MARIADB_PASS}
       prefix: mdb
     rabbitmq:
-      host: rabbitmq
+      host: postal-rabbitmq
       port: 5672
       username: postal
       password: ${SECRET_POSTAL_RABBITMQ_PASS}
