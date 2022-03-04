@@ -6,9 +6,12 @@ metadata:
   namespace: data
   annotations:
     metallb.universe.tf/allow-shared-ip: key-to-share-${CLUSTER_LB_NGINX}
+    metallb.universe.tf/address-pool: default
 spec:
   type: LoadBalancer
-  externalTrafficPolicy: Local
+  loadBalancerIP: ${CLUSTER_LB_NGINX}
+  externalIPs:
+    - ${CLUSTER_LB_NGINX}
   ports:
     - port: 25
       targetPort: 25
