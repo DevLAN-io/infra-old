@@ -6,5 +6,5 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h
-  url: https://nicko170.github.io/charts-1/
+  url: https://helm.soketi.app
   timeout: 3m
