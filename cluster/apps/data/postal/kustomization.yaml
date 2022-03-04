@@ -5,3 +5,4 @@ resources:
   - mariadb
   - rabbitmq
   - config.yaml
+  - cron.yaml
