@@ -6,4 +6,3 @@ resources:
   - authelia
   - certificate
   - ingress-nginx
-  - netmaker
