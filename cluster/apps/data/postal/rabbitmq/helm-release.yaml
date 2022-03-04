@@ -1,0 +1,32 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: postal-rabbitmq
+  namespace: data
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.bitnami.com/bitnami
+      chart: rabbitmq
+      version:
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami-charts
+        namespace: flux-system
+      interval: 5m
+
+  values:
+    image:
+      registry: docker.io
+      repository: bitnami/rabbitmq
+      tag: 3.9.13-debian-10-r38
+      pullPolicy: IfNotPresent
+
+    persistence:
+      size: 2Gi
+
+    auth:
+      password: "${SECRET_POSTAL_RABBITMQ_PASS}"
+      erlangCookie: "${SECRET_POSTAL_RABBITMQ_ERLANG}"
