@@ -6,7 +6,7 @@ metadata:
 data:
   postal.yml: |-
     web:
-      host: postal."${SECRET_CLUSTER_DOMAIN}"
+      host: postal.${SECRET_CLUSTER_DOMAIN}
       protocol: http
     general:
       use_ip_pools: false
@@ -30,7 +30,7 @@ data:
       host: mariadb
       port: 3306
       username: postal
-      password: "${SECRET_POSTAL_MARIADB_PASS}"
+      password: ${SECRET_POSTAL_MARIADB_PASS}
       database: postal
       pool_size: 5
     logging:
@@ -44,13 +44,13 @@ data:
       host: mariadb
       port: 3306
       username: root
-      password: "${SECRET_POSTAL_MARIADB_PASS}"
+      password: ${SECRET_POSTAL_MARIADB_PASS}
       prefix: mdb
     rabbitmq:
       host: rabbitmq
       port: 5672
       username: postal
-      password: "${SECRET_POSTAL_RABBITMQ_PASS}"
+      password: ${SECRET_POSTAL_RABBITMQ_PASS}
       vhost: /
     workers:
       threads: 4
@@ -65,12 +65,12 @@ data:
       max_message_size: 14 # size in Megabytes
     dns:
       mx_records:
-        - mx.postal."${SECRET_CLUSTER_DOMAIN}"
-      smtp_server_hostname: postal."${SECRET_CLUSTER_DOMAIN}"
-      spf_include: spf.postal."${SECRET_CLUSTER_DOMAIN}"
-      return_path: rp.postal."${SECRET_CLUSTER_DOMAIN}"
-      route_domain: routes.postal."${SECRET_CLUSTER_DOMAIN}"
-      track_domain: track.postal."${SECRET_CLUSTER_DOMAIN}"
+        - mx.postal.${SECRET_CLUSTER_DOMAIN}
+      smtp_server_hostname: postal.${SECRET_CLUSTER_DOMAIN}
+      spf_include: spf.postal.${SECRET_CLUSTER_DOMAIN}
+      return_path: rp.postal.${SECRET_CLUSTER_DOMAIN}
+      route_domain: routes.postal.${SECRET_CLUSTER_DOMAIN}
+      track_domain: track.postal.${SECRET_CLUSTER_DOMAIN}
       helo_hostname: # By default, this will be the same as the `smtp_server_hostname`
       dkim_identifier: postal
       domain_verify_prefix: postal-verification
@@ -81,10 +81,10 @@ data:
       username: {{ config.smtp.username }}
       password: {{ secrets.smtp.password }}
       from_name: Postal
-      from_address: postal@postal."${SECRET_CLUSTER_DOMAIN}"
+      from_address: postal@postal.${SECRET_CLUSTER_DOMAIN}
     rails:
       environment: production
-      secret_key: {{ secrets.rails.secret_key }}
+      secret_key: ${SECRET_POSTAL_RAILS_KEY}
     spamd:
       enabled: false
       host: 127.0.0.1
