@@ -8,65 +8,54 @@ data:
     ${SECRET_POSTAL_SIGNING_KEY}
 
   postal.yml: |-
-    web:
-      host: postal.${SECRET_CLUSTER_DOMAIN}
-      protocol: http
     general:
+      # This can be changed to allow messages to be sent from multiple IP addresses
       use_ip_pools: false
-      exception_url: {{ config.general.exception_url }}
-      maximum_delivery_attempts: 18
-      maximum_hold_expiry_days: 7
-      suppression_list_removal_delay: 30
-      use_local_ns_for_domains: false
+
+    web:
+      # The host that the management interface will be available on
+      host: postal.${SECRET_CLUSTER_DOMAIN}
+      # The protocol that requests to the management interface should happen on
+      protocol: https
+
     web_server:
-      bind_address: 0.0.0.0
+      # Specify configuration for the Postal web server
+      bind_address: 127.0.0.1
       port: 5000
-      max_threads: 5
-    fast_server:
-      enabled: false
-      bind_address:
-        - 0.0.0.0
-      port: 5001
-      ssl_port: 5002
-      proxy_protocol: false
-    main_db:
-      host: postal-mariadb
-      port: 3306
-      username: postal
-      password: ${SECRET_POSTAL_MARIADB_PASS}
-      database: postal
-      pool_size: 5
+
+    smtp_server:
+      # Specify configuration to the Postal SMTP server
+      port: 25
+
     logging:
+      # Specify options for the logging
       stdout: true
-      max_log_file_size: 20
-      max_log_files: 10
-      greylog:
-        host: gelf.graylog
-        port: 12201
-    message_db:
+
+    main_db:
+      # Specify the connection details for your MySQL database
       host: postal-mariadb
-      port: 3306
       username: root
       password: ${SECRET_POSTAL_MARIADB_PASS}
-      prefix: mdb
+      database: postal
+
+    message_db:
+      # Specify the connection details for your MySQL server that will be house the
+      # message databases for mail servers.
+      host: postal-mariadb
+      username: root
+      password: ${SECRET_POSTAL_MARIADB_PASS}
+      prefix: postal
+
     rabbitmq:
+      # Specify connection details for your RabbitMQ server
       host: postal-rabbitmq
-      port: 5672
-      username: postal
       password: ${SECRET_POSTAL_RABBITMQ_PASS}
-      vhost: /
-    workers:
-      threads: 4
-    smtp_server:
-      port: 2525
-      tls_enabled: false
-      tls_ciphers:
-      ssl_version: SSLv23
-      proxy_protocol: false
-      log_connect: true
-      strip_received_headers: false
-      max_message_size: 14 # size in Megabytes
+      vhost: postal
+
     dns:
+      # Specify the DNS records that you have configured. Refer to the documentation at
+      # https://github.com/atech/postal/wiki/Domains-&-DNS-Configuration for further
+      # information about these.
       mx_records:
         - mx.postal.${SECRET_CLUSTER_DOMAIN}
       smtp_server_hostname: postal.${SECRET_CLUSTER_DOMAIN}
@@ -74,28 +63,19 @@ data:
       return_path: rp.postal.${SECRET_CLUSTER_DOMAIN}
       route_domain: routes.postal.${SECRET_CLUSTER_DOMAIN}
       track_domain: track.postal.${SECRET_CLUSTER_DOMAIN}
-      helo_hostname: # By default, this will be the same as the `smtp_server_hostname`
-      dkim_identifier: postal
-      domain_verify_prefix: postal-verification
-      custom_return_path_prefix: psrp
+
     smtp:
-      host: smtp
-      port: 25
-      username: {{ config.smtp.username }}
-      password: {{ secrets.smtp.password }}
+      # Specify an SMTP server that can be used to send messages from the Postal management
+      # system to users. You can configure this to use a Postal mail server once the
+      # your installation has been set up.
+      host: postal-smtp
+      port: 2525
+      username: # Complete when Postal is running and you can
+      password: # generate the credentials within the interface.
       from_name: Postal
-      from_address: postal@postal.${SECRET_CLUSTER_DOMAIN}
+      from_address: postal.${SECRET_CLUSTER_DOMAIN}
+
     rails:
-      environment: production
+      # This is generated automatically by the config initialization. It should be a random
+      # string unique to your installation.
       secret_key: ${SECRET_POSTAL_RAILS_KEY}
-    spamd:
-      enabled: false
-      host: 127.0.0.1
-      port: 783
-    clamav:
-      enabled: false
-      host: 127.0.0.1
-      port: 2000
-    smtp_client:
-      open_timeout: 30
-      read_timeout: 60
