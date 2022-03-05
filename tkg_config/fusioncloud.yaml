@@ -1,0 +1,29 @@
+apiVersion: run.tanzu.vmware.com/v1alpha2
+kind: TanzuKubernetesCluster
+metadata:
+  name: production
+  namespace: fusioncloud
+spec:
+  topology:
+    controlPlane:
+      replicas: 3
+      vmClass: best-effort-medium
+      storageClass: vsan-thin
+      tkr:
+        reference:
+          name: v1.21.6---vmware.1-tkg.1.b3d708a
+
+    nodePools:
+      - name: worker-large
+        replicas: 10
+        vmClass: best-effort-large
+        storageClass: vsan-thin
+        tkr:
+          reference:
+            name: v1.21.6---vmware.1-tkg.1.b3d708a
+  settings:
+    storage:
+      defaultClass: vsan-thin
+    network:
+      cni:
+        name: antrea
