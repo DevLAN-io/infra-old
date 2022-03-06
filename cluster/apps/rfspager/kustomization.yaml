@@ -6,6 +6,7 @@ resources:
   - certificate.yaml
   - configmap.yaml
   - secrets.yaml
+  - secret-files.yaml
   - regcred.yaml
   - helm-release.yaml
   - backup.yaml

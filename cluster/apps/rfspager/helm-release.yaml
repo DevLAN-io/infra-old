@@ -8,30 +8,41 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://nicko170.github.io/laravel-charts/
-      chart: rfspager
-      version: 1.1.0
+      # renovate: registryUrl=https://charts.npratley.net
+      chart: laravel
+      version: 0.0.2
       sourceRef:
         kind: HelmRepository
-        name: nicko170-charts
+        name: npratley-charts
         namespace: flux-system
       interval: 5m
 
   values:
-    autoscaling:
-      enabled: true
-      minReplicas: 3
-      maxReplicas: 15
-
     image:
       repository: docker.io/nick170/rfspager
       tag: v1.1.4
 
-    schedule: "*/1 * * * *"
-    scheduleCommand: /cnb/process/schedule
+    imagePullSecrets:
+      - name: regcred
 
-    workerCount: 5
-    workerCommand: /cnb/process/worker
+    web:
+      enabled: true
+      count: 3
+      command: /cnb/process/web
+
+    cron:
+      enabled: true
+      command: /cnb/process/schedule
+      schedule: "*/1 * * * *"
+
+    worker:
+      enabled: true
+      count: 5
+      command: /cnb/process/worker
+
+    env:
+      TZ: "Australia/Sydney"
+      PORT: 8080
 
     envFrom:
       - configMapRef:
@@ -39,27 +50,32 @@ spec:
       - secretRef:
           name: rfspager-secrets
 
-    imagePullSecrets:
-      - name: regcred
+    volumes:
+      - name: secret-files
+        secret:
+          secretName: rfspager-secret-files
 
-    env:
-      TZ: "Australia/Sydney"
-      PORT: 8080
+    volumeMounts:
+      - name: secret-files
+        mountPath: /secrets/
 
     ingress:
-      main:
-        enabled: true
-        ingressClassName: "nginx"
+      enabled: true
+      ingressClassName: "nginx"
 
-        hosts:
-          - host: "${RFSPAGER_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-              - "${RFSPAGER_DOMAIN}"
-            secretName: "cert-${RFSPAGER_DOMAIN}"
+      hosts:
+        - host: "${RFSPAGER_DOMAIN}"
+          paths:
+            - path: /
+              pathType: Prefix
+
+      tls:
+        - hosts:
+            - "${RFSPAGER_DOMAIN}"
+          secretName: "cert-${RFSPAGER_DOMAIN}"
+
+    redis:
+      enabled: true
 
     postgresql:
       enabled: true

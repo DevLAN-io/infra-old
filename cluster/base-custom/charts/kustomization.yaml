@@ -24,7 +24,7 @@ resources:
   - metallb-charts.yaml
   - minio-charts.yaml
   - netmaker-charts.yaml
-  - nicko170-charts.yaml
+  - npratley-charts.yaml
   - node-feature-discovery.yaml
   - prometheus-community-charts.yaml
   - rook-ceph-charts.yaml

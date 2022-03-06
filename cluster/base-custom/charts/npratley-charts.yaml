@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: nicko170-charts
+  name: npratley-charts
   namespace: flux-system
 spec:
   interval: 1h
-  url: https://nicko170.github.io/laravel-charts/
+  url: http://charts.npratley.net/
   timeout: 3m
