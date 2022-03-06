@@ -79,9 +79,18 @@ spec:
 
     postgresql:
       enabled: true
-      postgresqlUsername: postgres
-      postgresqlPassword: "${RFSPAGER_DB_PASSWORD}"
-      postgresqlDatabase: postgres
-      persistence:
-        enabled: true
-        size: 15Gi
+
+      global:
+        postgresql:
+          auth:
+            username: postgres
+            password: "${RFSPAGER_DB_PASSWORD}"
+            database: postgres
+
+      primary:
+        persistence:
+          enabled: true
+          size: 20Gi
+
+      readReplicas:
+        replicaCount: 0
