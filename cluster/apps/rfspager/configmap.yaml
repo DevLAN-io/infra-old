@@ -51,7 +51,7 @@ data:
   PUSHER_APP_ID: "1"
   PUSHER_APP_HOST: ws.${RFSPAGER_DOMAIN}
 
-  FIREBASE_CREDENTIALS: /rfspager-e1e40-firebase-adminsdk-tf6gz-57ef7a0dbf.json
+  FIREBASE_CREDENTIALS: /secrets/firebase.json
 
   APN_KEY_ID: P7WNA87JF9
   APN_TEAM_ID: W62CSN3S5H
