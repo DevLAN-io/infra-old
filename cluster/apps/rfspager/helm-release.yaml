@@ -80,9 +80,11 @@ spec:
     postgresql:
       enabled: true
 
+
       global:
         postgresql:
           auth:
+            postgresPassword: "${RFSPAGER_DB_PASSWORD}"
             username: postgres
             password: "${RFSPAGER_DB_PASSWORD}"
             database: postgres
