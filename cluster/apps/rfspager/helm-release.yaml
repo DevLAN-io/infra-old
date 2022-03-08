@@ -103,6 +103,19 @@ spec:
           - name: pgbackrest-config
             mountPath: /etc/pgbackrest
 
+        initContainers:
+          - name: pgbackrest-restore
+            image: bitnami/postgresql:14.2.0
+            volumeMounts:
+              - name: pgbackrest-config
+                mountPath: /etc/pgbackrest
+              - name: data
+                mountPath: /bitnami/postgresql
+            command:
+              - pgbackrest
+              - restore
+              - --stanza=my_stanza
+
         persistence:
           enabled: true
           size: 100Gi
