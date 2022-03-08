@@ -36,11 +36,13 @@ spec:
       ingressClassName: "nginx"
       path: /
       hosts:
-        - minio.${SECRET_CLUSTER_DOMAIN}
+        - "minio.${SECRET_CLUSTER_DOMAIN}"
+        - "*.minio.${SECRET_CLUSTER_DOMAIN}"
 
       tls:
         - hosts:
             - "minio.${SECRET_CLUSTER_DOMAIN}"
+            - "*.minio.${SECRET_CLUSTER_DOMAIN}"
           secretName: "${SECRET_CLUSTER_CERTIFICATE_DEFAULT}"
 
     consoleIngress:
