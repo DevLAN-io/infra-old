@@ -25,4 +25,4 @@ data:
     delta=y
 
     [my_stanza]
-    pg1-path=/postgresql/data
+    pg1-path=/bitnami/postgresql/data1
