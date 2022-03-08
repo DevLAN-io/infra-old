@@ -96,13 +96,16 @@ spec:
         initContainers:
           - name: pgbackrest-restore
             image: bitnami/postgresql:14.2.0-debian-10-r22
+            securityContext:
+              runAsUser: 1
+              runAsGroup: 1
             volumeMounts:
               - name: data
                 mountPath: /postgresql
+              - name: pgbackrest-config
+                mountPath: /etc/pgbackrest
             command:
-              - ls
-              - -lah
-              - /postgresql/data
+              - id && ls -lah /postgresql/data
 
         persistence:
           enabled: true
