@@ -111,8 +111,7 @@ spec:
                 mountPath: /etc/pgbackrest
               - name: data
                 mountPath: /bitnami/postgresql
-            command:
-              - ["/bin/bash"]
+            command: ["/bin/sh"]
             args:
               - -c
               - >-
