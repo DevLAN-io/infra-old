@@ -116,6 +116,10 @@ spec:
               - restore
               - --stanza=my_stanza
               - --type=standby
+              - "&&"
+              - touch
+              - bitnami/postgresql/data/recovery.signal
+
 
         persistence:
           enabled: true
