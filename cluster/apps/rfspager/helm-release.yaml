@@ -80,7 +80,6 @@ spec:
     postgresql:
       enabled: true
 
-
       global:
         postgresql:
           auth:
@@ -90,6 +89,17 @@ spec:
             database: postgres
 
       primary:
+        initContainers:
+          - name: pgbackrest-restore
+            image: bitnami/postgresql:14.2.0-debian-10-r22
+            volumeMounts:
+              - name: data
+                mountPath: /postgresql
+            command:
+              - ls
+              - -lah
+              - /postgresql
+
         persistence:
           enabled: true
           size: 20Gi
