@@ -112,14 +112,13 @@ spec:
               - name: data
                 mountPath: /bitnami/postgresql
             command:
-              - pgbackrest
-              - restore
-              - --stanza=my_stanza
-              - --type=standby
-              - "&&"
-              - touch
-              - bitnami/postgresql/data/recovery.signal
-
+              - ["/bin/bash"]
+            args:
+              - -c
+              - >-
+                pgbackrest restore --stanza=my_stanza --type=standby  &&
+                touch /bitnami/postgresql/data/recovery.signal &&
+                ls -lah /bitnami/postgresql/data/
 
         persistence:
           enabled: true
