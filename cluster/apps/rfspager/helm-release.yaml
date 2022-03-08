@@ -115,6 +115,7 @@ spec:
               - pgbackrest
               - restore
               - --stanza=my_stanza
+              - --type=standby
 
         persistence:
           enabled: true
