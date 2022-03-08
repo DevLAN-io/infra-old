@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=http://charts.npratley.net
       chart: laravel
-      version: 0.0.6
+      version: 0.0.7
       sourceRef:
         kind: HelmRepository
         name: npratley-charts
@@ -115,7 +115,7 @@ spec:
             args:
               - -c
               - >-
-                pgbackrest restore --stanza=rfspager --target-timeline  &&
+                pgbackrest restore --stanza=rfspager --target-timeline current --archive-mode off  &&
                 touch /bitnami/postgresql/data/recovery.signal &&
                 ls -lah /bitnami/postgresql/data/
 
