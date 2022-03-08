@@ -7,7 +7,7 @@ metadata:
 data:
   pgbackrest.conf: |2-
     [global]
-    repo1-path=/rfspager
+    repo1-path=/rfspager-14
     repo1-type=s3
     repo1-s3-uri-style=path
     repo1-s3-endpoint=minio.${SECRET_CLUSTER_DOMAIN}
