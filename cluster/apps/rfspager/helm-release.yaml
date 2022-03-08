@@ -105,7 +105,7 @@ spec:
 
         persistence:
           enabled: true
-          size: 20Gi
+          size: 100Gi
 
       readReplicas:
         replicaCount: 0
