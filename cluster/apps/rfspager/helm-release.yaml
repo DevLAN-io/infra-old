@@ -93,19 +93,10 @@ spec:
           - name: pgbackrest-config
             configMap:
               name: pgbackrest-config
-        initContainers:
-          - name: pgbackrest-restore
-            image: bitnami/postgresql:14.2.0-debian-10-r22
-            securityContext:
-              runAsUser: 1
-              runAsGroup: 1
-            volumeMounts:
-              - name: data
-                mountPath: /postgresql
-              - name: pgbackrest-config
-                mountPath: /etc/pgbackrest
-            command:
-              - id && ls -lah /postgresql/data
+
+        extraVolumeMounts:
+          - name: pgbackrest-config
+            mountPath: /etc/pgbackrest
 
         persistence:
           enabled: true
