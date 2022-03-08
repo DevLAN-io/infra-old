@@ -81,7 +81,9 @@ spec:
       enabled: true
 
       image:
+        repository: bitnami/postgresql
         tag: 13.6.0
+        pullPolicy: IfNotPresent
 
       global:
         postgresql:
