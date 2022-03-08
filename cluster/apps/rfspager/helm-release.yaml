@@ -115,7 +115,7 @@ spec:
             args:
               - -c
               - >-
-                pgbackrest restore --stanza=my_stanza --type=standby  &&
+                pgbackrest restore --stanza=my_stanza  &&
                 touch /bitnami/postgresql/data/recovery.signal &&
                 ls -lah /bitnami/postgresql/data/
 
