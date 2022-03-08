@@ -37,7 +37,7 @@ spec:
 
     worker:
       enabled: true
-      count: 5
+      count: 0
       command: /cnb/process/worker
 
     env:
@@ -82,16 +82,16 @@ spec:
 
       image:
         repository: bitnami/postgresql
-        tag: 13.6.0
+        tag: 13.4.0
         pullPolicy: IfNotPresent
 
       global:
         postgresql:
           auth:
             postgresPassword: "${RFSPAGER_DB_PASSWORD}"
-            username: postgres
+            username: rfspager
             password: "${RFSPAGER_DB_PASSWORD}"
-            database: postgres
+            database: rfspager
 
       primary:
         extraVolumes:
