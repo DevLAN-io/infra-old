@@ -1,0 +1,28 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pgbackrest-config
+  namespace: rfspager
+data:
+  pgbackrest.conf: |2-
+    [global]
+    repo1-path=/rfspager
+    repo1-type=s3
+    repo1-s3-uri-style=path
+    repo1-s3-endpoint=minio.${SECRET_CLUSTER_DOMAIN}
+    repo1-s3-bucket=pgbackrest
+    repo1-s3-verify-tls=n
+    repo1-s3-key=${SECRET_MINIO_ACCESS_KEY}
+    repo1-s3-key-secret=${SECRET_MINIO_SECRET_KEY}
+    repo1-s3-region=au-devlan-s1
+
+    repo1-retention-full=7
+    process-max=8
+    log-level-console=info
+    log-level-file=debug
+    start-fast=y
+    delta=y
+
+    [my_stanza]
+    pg1-path=/postgresql/data

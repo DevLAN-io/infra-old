@@ -8,5 +8,6 @@ resources:
   - secrets.yaml
   - secret-files.yaml
   - regcred.yaml
+  - pgbackrest-config.yaml
   - helm-release.yaml
   - backup.yaml

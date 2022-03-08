@@ -89,6 +89,10 @@ spec:
             database: postgres
 
       primary:
+        extraVolumes:
+          - name: pgbackrest-config
+            configMap:
+              name: pgbackrest-config
         initContainers:
           - name: pgbackrest-restore
             image: bitnami/postgresql:14.2.0-debian-10-r22
@@ -98,7 +102,7 @@ spec:
             command:
               - ls
               - -lah
-              - /postgresql
+              - /postgresql/data
 
         persistence:
           enabled: true
