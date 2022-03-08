@@ -31,13 +31,13 @@ spec:
       command: /cnb/process/web
 
     cron:
-      enabled: true
+      enabled: false
       command: /cnb/process/schedule
       schedule: "*/1 * * * *"
 
     worker:
-      enabled: true
-      count: 0
+      enabled: false
+      count: 5
       command: /cnb/process/worker
 
     env:
