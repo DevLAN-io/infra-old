@@ -9,5 +9,6 @@ resources:
   - secret-files.yaml
   - regcred.yaml
   - pgbackrest-config.yaml
+  - postgres-startup-scripts.yaml
   - helm-release.yaml
   - backup.yaml

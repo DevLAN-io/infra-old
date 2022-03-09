@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-startup-scripts
+  namespace: rfspager
+data:
+  locale.sh: |2-
+    #!/bin/bash
+    echo "Generating en_AU locale"
+    echo 'en_AU.UTF-8 UTF-8' >> /etc/locale.gen
+    /usr/sbin/locale-gen
