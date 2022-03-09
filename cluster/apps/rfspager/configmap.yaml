@@ -10,11 +10,7 @@ data:
   APP_DEBUG: "false"
   APP_URL: https://rfspager.app
 
-  AWS_ACCESS_KEY_ID: backend
-  AWS_BUCKET: photos
-  AWS_DEFAULT_REGION: default
-  AWS_URL: https://rfspager.app/photos/
-  AWS_ENDPOINT: https://s3.devlan.io
+  FILESYSTEM_DISK: 's3'
 
   LOG_CHANNEL: stack
   LOG_LEVEL: debug
