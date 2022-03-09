@@ -93,7 +93,11 @@ spec:
             password: "${RFSPAGER_DB_PASSWORD}"
             database: rfspager
 
+
       primary:
+        containerSecurityContext:
+          runAsUser: 0
+
         extraVolumes:
           - name: pgbackrest-config
             configMap:
