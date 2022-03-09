@@ -125,7 +125,7 @@ spec:
             args:
               - -c
               - >-
-                pgbackrest restore --stanza=rfspager --target-timeline current --archive-mode off  &&
+                pgbackrest restore --stanza=rfspager --target-timeline current  &&
                 touch /bitnami/postgresql/data/recovery.signal &&
                 ls -lah /bitnami/postgresql/data/
 
