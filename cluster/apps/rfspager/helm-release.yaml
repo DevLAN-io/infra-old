@@ -20,7 +20,7 @@ spec:
   values:
     image:
       repository: docker.io/nick170/rfspager
-      tag: v1.1.6
+      tag: v1.1.7
 
     imagePullSecrets:
       - name: regcred
