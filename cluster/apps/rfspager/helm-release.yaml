@@ -54,15 +54,10 @@ spec:
       - name: secret-files
         secret:
           secretName: rfspager-secret-files
-      - name: postgres-startup-scripts
-        secret:
-          secretName: postgres-startup-scripts
 
     volumeMounts:
       - name: secret-files
         mountPath: /secrets/
-      - name: postgres-startup-scripts
-        mountPath: /docker-entrypoint-preinitdb.d/
 
     ingress:
       enabled: true
@@ -104,9 +99,15 @@ spec:
             configMap:
               name: pgbackrest-config
 
+          - name: postgres-startup-scripts
+            configMap:
+              name: postgres-startup-scripts
+
         extraVolumeMounts:
           - name: pgbackrest-config
             mountPath: /etc/pgbackrest
+          - name: postgres-startup-scripts
+            mountPath: /docker-entrypoint-preinitdb.d/
 
         initContainers:
           - name: pgbackrest-restore
