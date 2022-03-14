@@ -36,3 +36,4 @@ resources:
   - twuni-charts.yaml
   - vmware-charts.yaml
   - weaveworks-kured-charts.yaml
+  - zammad-charts.yaml
