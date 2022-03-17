@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: forever-config
-  namespace: forever
+  namespace: wordpress
 data:
   DB_NAME: 'forever'
   DB_USER: 'forever'
