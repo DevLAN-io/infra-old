@@ -5,6 +5,7 @@ metadata:
   name: forever-config
   namespace: wordpress
 data:
+  DISABLE_WP_CRON: 'true'
   DB_NAME: 'forever'
   DB_USER: 'forever'
   DB_HOST: 'forever-mysql.wordpress.svc.cluster.local'

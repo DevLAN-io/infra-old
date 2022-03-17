@@ -20,7 +20,7 @@ spec:
   values:
     image:
       repository: docker.io/nick170/forevergrowing
-      tag: v0.0.2
+      tag: v0.0.3
 
     imagePullSecrets:
       - name: regcred
@@ -31,7 +31,7 @@ spec:
       command: /cnb/process/web
 
     cron:
-      enabled: false
+      enabled: true
       command: /cnb/process/cron
       schedule: "*/1 * * * *"
 
