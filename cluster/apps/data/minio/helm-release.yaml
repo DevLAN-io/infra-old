@@ -38,11 +38,13 @@ spec:
       hosts:
         - "minio.${SECRET_CLUSTER_DOMAIN}"
         - "*.minio.${SECRET_CLUSTER_DOMAIN}"
+        - "cdn.${SECRET_FOREVER_DOMAIN}"
 
       tls:
         - hosts:
             - "minio.${SECRET_CLUSTER_DOMAIN}"
             - "*.minio.${SECRET_CLUSTER_DOMAIN}"
+            - "cdn.${SECRET_FOREVER_DOMAIN}"
           secretName: "${SECRET_CLUSTER_CERTIFICATE_DEFAULT}"
 
     consoleIngress:
