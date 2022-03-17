@@ -1,0 +1,85 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: rfspager
+  namespace: rfspager
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=http://charts.npratley.net
+      chart: laravel
+      version: 0.0.8
+      sourceRef:
+        kind: HelmRepository
+        name: npratley-charts
+        namespace: flux-system
+      interval: 5m
+
+  values:
+    image:
+      repository: docker.io/nick170/forevergrowing
+      tag: v0.0.1
+
+    imagePullSecrets:
+      - name: regcred
+
+    web:
+      enabled: true
+      count: 3
+      command: /cnb/process/web
+
+    cron:
+      enabled: false
+      command: /cnb/process/cron
+      schedule: "*/1 * * * *"
+
+    worker:
+      enabled: false
+
+    env:
+      TZ: "Australia/Sydney"
+      PORT: 8080
+
+    envFrom:
+      - configMapRef:
+          name: forever-config
+      - secretRef:
+          name: forever-secrets
+
+
+    ingress:
+      enabled: true
+      ingressClassName: "nginx"
+
+      hosts:
+        - host: "${SECRET_FOREVER_DOMAIN}"
+          paths:
+            - path: /
+              pathType: Prefix
+
+      tls:
+        - hosts:
+            - "${SECRET_FOREVER_DOMAIN}"
+          secretName: "${SECRET_FOREVER_DOMAIN}"
+
+    mysql:
+      enabled: true
+
+      image:
+        registry: docker.io
+        repository: bitnami/mysql
+        tag: 8.0.28-debian-10-r41
+
+      global:
+        storageClass: vsan-thin
+
+      auth:
+        rootPassword: "${SECRET_FOREVER_DB_PASS}"
+        database: forever
+        username: forever
+        password: "${SECRET_FOREVER_DB_PASS}"
+
+      secondary:
+        replicaCount: 0

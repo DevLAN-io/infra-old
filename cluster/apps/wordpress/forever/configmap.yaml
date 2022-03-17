@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: forever-config
+  namespace: forever
+data:
+  DB_NAME: 'forever'
+  DB_USER: 'forever'
+  DB_HOST: 'mysql-forever.wordpress.svc.cluster.local'
+  DB_PREFIX: 'DmcRA7_'
+  WP_ENV: 'production'
+  WP_HOME: 'https://${SECRET_FOREVER_DOMAIN}'
+  WP_SITEURL: "https://${SECRET_FOREVER_DOMAIN}/wp"
