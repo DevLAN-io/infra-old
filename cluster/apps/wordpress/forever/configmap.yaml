@@ -7,7 +7,7 @@ metadata:
 data:
   DB_NAME: 'forever'
   DB_USER: 'forever'
-  DB_HOST: 'mysql-forever.wordpress.svc.cluster.local'
+  DB_HOST: 'forever-mysql.wordpress.svc.cluster.local'
   DB_PREFIX: 'DmcRA7_'
   WP_ENV: 'production'
   WP_HOME: 'https://${SECRET_FOREVER_DOMAIN}'
