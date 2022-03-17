@@ -27,7 +27,7 @@ spec:
 
     web:
       enabled: true
-      count: 1
+      count: 3
       command: /cnb/process/web
 
     cron:
