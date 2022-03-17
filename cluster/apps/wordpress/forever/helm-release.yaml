@@ -58,10 +58,6 @@ spec:
           paths:
             - path: /
               pathType: Prefix
-        - host: "www.${SECRET_FOREVER_DOMAIN}"
-          paths:
-            - path: /
-              pathType: Prefix
 
       tls:
         - hosts:
