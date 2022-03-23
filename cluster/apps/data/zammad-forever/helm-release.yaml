@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://zammad.github.io/zammad-helm
       chart: zammad
-      version: 6.1.0
+      version: 6.2.0
       sourceRef:
         kind: HelmRepository
         name: zammad-charts
