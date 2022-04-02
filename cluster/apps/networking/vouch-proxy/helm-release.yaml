@@ -44,3 +44,11 @@ spec:
         provider: azure
         client_id: ${SECRET_AZURE_CLIENT_ID}
         client_secret: ${SECRET_AZURE_CLIENT_SECRET}
+        auth_url: https://login.microsoftonline.com/${SECRET_AZURE_DIRECTORY_ID}/oauth2/v2.0/authorize
+        token_url: https://login.microsoftonline.com/${SECRET_AZURE_DIRECTORY_ID}/oauth2/v2.0/token
+        scopes:
+          - openid
+          - email
+          - profile
+        callback_url: https://login.${SECRET_CLUSTER_DOMAIN}/auth
+        azure_token: id_token
