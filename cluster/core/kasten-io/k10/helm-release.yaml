@@ -34,8 +34,10 @@ spec:
       persistence:
         storageClass: vsan-thin
     auth:
-      tokenAuth:
+      basicAuth:
         enabled: true
+        htpasswd: "${SECRET_K10_HTPASSWD}"
+
     clusterName: k8s
     ingress:
       annotations:
