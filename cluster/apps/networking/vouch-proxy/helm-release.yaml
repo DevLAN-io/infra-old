@@ -1,0 +1,49 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: vouch
+  namespace: networking
+spec:
+  releaseName: vouch
+  chart:
+    spec:
+      chart: vouch
+      sourceRef:
+        kind: HelmRepository
+        name: vouch
+        namespace: flux-system
+  interval: 5m
+  values:
+    replicas: 3
+
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        cert-manager.io/cluster-issuer: letsencrypt-production
+
+      hosts:
+        - login.${SECRET_CLUSTER_DOMAIN}
+
+      tls:
+        - secretName: login.${SECRET_CLUSTER_DOMAIN}
+          hosts:
+            - login.${SECRET_CLUSTER_DOMAIN}
+
+    config:
+      vouch:
+        allowAllUsers: true
+        jwt:
+          secret: ${SECRET_VOUCH_JWT_KEY}
+        cookie:
+          domain: ${SECRET_CLUSTER_DOMAIN}
+
+      teamWhitelist:
+        - devlan-io
+        - fusioncloud-xyz
+
+      oauth:
+        provider: github
+        client_id: ${SECRET_GITHUB_CLIENT_ID}
+        client_secret: ${SECRET_GITHUB_CLIENT_SECRET}

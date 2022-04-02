@@ -24,7 +24,7 @@ resources:
   - metallb-charts.yaml
   - minio-charts.yaml
   - netmaker-charts.yaml
-  - npratley-charts.yaml
+  - nicko170-charts.yaml
   - node-feature-discovery.yaml
   - prometheus-community-charts.yaml
   - rook-ceph-charts.yaml
@@ -35,5 +35,6 @@ resources:
   - traefik-charts.yaml
   - twuni-charts.yaml
   - vmware-charts.yaml
+  - vouch-charts.yaml
   - weaveworks-kured-charts.yaml
   - zammad-charts.yaml
