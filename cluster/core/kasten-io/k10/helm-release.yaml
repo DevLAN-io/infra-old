@@ -53,7 +53,7 @@ spec:
       create: true
       class: nginx
       host: &host "k10.${SECRET_CLUSTER_DOMAIN}"
-      urlPath: ""
+      urlPath: "k10"
       hosts:
         - *host
       tls:
