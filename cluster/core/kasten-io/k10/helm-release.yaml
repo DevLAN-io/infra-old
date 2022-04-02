@@ -48,7 +48,7 @@ spec:
           auth_request_set $auth_resp_jwt $upstream_http_x_vouch_jwt;
           auth_request_set $auth_resp_err $upstream_http_x_vouch_err;
           auth_request_set $auth_resp_failcount $upstream_http_x_vouch_failcount;
-        nginx.ingress.kubernetes.io/auth-url: https://login.${SECRET_CLUSTER_DOMAIN}/validate
+        nginx.ingress.kubernetes.io/auth-url: http://vouch:9090/validate
 
       create: true
       class: nginx

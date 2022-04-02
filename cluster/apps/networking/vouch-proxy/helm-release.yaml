@@ -39,11 +39,8 @@ spec:
         cookie:
           domain: ${SECRET_CLUSTER_DOMAIN}
 
-      teamWhitelist:
-        - devlan-io
-        - fusioncloud-xyz
 
       oauth:
-        provider: github
-        client_id: ${SECRET_GITHUB_CLIENT_ID}
-        client_secret: ${SECRET_GITHUB_CLIENT_SECRET}
+        provider: azure
+        client_id: ${SECRET_AZURE_CLIENT_ID}
+        client_secret: ${SECRET_AZURE_CLIENT_SECRET}
