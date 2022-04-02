@@ -33,7 +33,6 @@ spec:
     global:
       persistence:
         storageClass: vsan-thin
-    auth:
 
     clusterName: k8s
     ingress:
