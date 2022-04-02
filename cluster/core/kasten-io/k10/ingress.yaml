@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: k10-ingress
+  namespace: kasten-io
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/auth-response-headers: X-Vouch-User
+    nginx.ingress.kubernetes.io/auth-signin: >-
+      https://login.fusioncloud.xyz/login?url=$scheme://$http_host$request_uri&vouch-failcount=$auth_resp_failcount&X-Vouch-Token=$auth_resp_jwt&error=$auth_resp_err
+    nginx.ingress.kubernetes.io/auth-snippet: |
+      auth_request_set $auth_resp_jwt $upstream_http_x_vouch_jwt;
+      auth_request_set $auth_resp_err $upstream_http_x_vouch_err;
+      auth_request_set $auth_resp_failcount $upstream_http_x_vouch_failcount;
+    nginx.ingress.kubernetes.io/auth-url: https://login.fusioncloud.xyz/validate
+
+spec:
+  tls:
+    - hosts:
+        - k10.fusioncloud.xyz
+      secretName: cert-fusioncloud.xyz
+  rules:
+    - host: k10.fusioncloud.xyz
+      http:
+        paths:
+          - path: /k10/
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: gateway
+                port:
+                  number: 8000
