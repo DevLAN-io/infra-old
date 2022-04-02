@@ -6,3 +6,4 @@ resources:
   - kube-system
   - flux-system
   - metallb
+  - kasten-io
