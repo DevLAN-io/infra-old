@@ -1,7 +1,8 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: k10-ingress
+  name: k10-protected-ingress
   namespace: kasten-io
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
