@@ -34,8 +34,6 @@ spec:
       persistence:
         storageClass: vsan-thin
     auth:
-      tokenAuth:
-        enabled: true
 
     clusterName: k8s
     ingress:
