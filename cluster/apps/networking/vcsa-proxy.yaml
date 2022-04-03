@@ -21,7 +21,9 @@ spec:
     - host: vcsa-ssl.devlan.io
       http:
         paths:
-          - backend:
+          - path: "/"
+            pathType: ImplementationSpecific
+            backend:
               service:
                 name: external-vcsa
                 port:
