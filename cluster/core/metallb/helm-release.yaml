@@ -25,3 +25,7 @@ spec:
           protocol: bgp
           addresses:
             - 103.79.72.0/25
+        - name: internal
+          protocol: layer2
+          addresses:
+            - 172.31.0.96/29

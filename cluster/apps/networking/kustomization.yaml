@@ -5,4 +5,5 @@ resources:
   - namespace.yaml
   - certificate
   - ingress-nginx
+  - ingress-nginx-internal
   - vouch-proxy
