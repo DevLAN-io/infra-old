@@ -21,8 +21,8 @@ spec:
         type: ClusterIP
         externalTrafficPolicy: ""
       tls:
-        hostSecretName: coder-tls
-        devurlsHostSecretName: coder-dev-tls
+        hostSecretName: coder.devlan.io
+        devurlsHostSecretName: coder.devlan.io
 
     ingress:
       enable: true

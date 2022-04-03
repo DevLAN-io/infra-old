@@ -1,0 +1,18 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert-coder.devlan.io
+  namespace: coder
+spec:
+  dnsNames:
+    - 'coder.devlan.io'
+    - '*.dev.devlan.io'
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: letsencrypt-production
+  secretName: coder.devlan.io
+  usages:
+    - digital signature
+    - key encipherment
