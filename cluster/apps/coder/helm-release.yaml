@@ -25,7 +25,7 @@ spec:
         devurlsHostSecretName: coder.devlan.io
 
     ingress:
-      enable: false
+      enable: true
       host: "coder.devlan.io"
       tls:
         enabled: true
