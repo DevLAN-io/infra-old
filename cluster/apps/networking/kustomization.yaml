@@ -7,3 +7,4 @@ resources:
   - ingress-nginx
   - ingress-nginx-internal
   - vouch-proxy
+  - vcsa-proxy.yaml
