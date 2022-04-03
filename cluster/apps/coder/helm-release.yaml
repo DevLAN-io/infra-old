@@ -15,13 +15,14 @@ spec:
         namespace: flux-system
   interval: 5m
   values:
-    superAdmin:
-      passwordSecret:
-        name: "coder-admin-password"
-        key: "admin-password"
-
     coderd:
       devurlsHost: "*.dev.devlan.io"
+      serviceSpec:
+        type: ClusterIP
+        externalTrafficPolicy: ""
+        tls:
+          hostSecretName: coder-tls
+          devurlsHostSecretName: coder-dev-tls
 
     ingress:
       enable: true
