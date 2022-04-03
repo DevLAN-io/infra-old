@@ -1,0 +1,31 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: coder
+  namespace: coder
+spec:
+  releaseName: coder
+  chart:
+    spec:
+      chart: coder
+      sourceRef:
+        kind: HelmRepository
+        name: coder-charts
+        namespace: flux-system
+  interval: 5m
+  values:
+    superAdmin:
+      passwordSecret:
+        name: "coder-admin-password"
+        key: "admin-password"
+
+    coderd:
+      devurlsHost: "*.dev.devlan.io"
+
+    ingress:
+      enable: true
+      host: "coder.devlan.io"
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        kubernetes.io/ingress.class: nginx
