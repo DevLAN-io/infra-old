@@ -20,9 +20,9 @@ spec:
       serviceSpec:
         type: ClusterIP
         externalTrafficPolicy: ""
-        tls:
-          hostSecretName: coder-tls
-          devurlsHostSecretName: coder-dev-tls
+      tls:
+        hostSecretName: coder-tls
+        devurlsHostSecretName: coder-dev-tls
 
     ingress:
       enable: true
