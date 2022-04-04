@@ -20,10 +20,3 @@ spec:
       tls:
         hostSecretName: code.devlan.io
         devurlsHostSecretName: code.devlan.io
-
-    ingress:
-      enable: true
-      host: "code.devlan.io"
-      annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-production
-        kubernetes.io/ingress.class: nginx
