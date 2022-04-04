@@ -16,19 +16,14 @@ spec:
   interval: 5m
   values:
     coderd:
-      devurlsHost: "*.dev.devlan.io"
-      serviceSpec:
-        type: ClusterIP
-        externalTrafficPolicy: ""
+      devurlsHost: "*.code.devlan.io"
       tls:
-        hostSecretName: coder.devlan.io
-        devurlsHostSecretName: coder.devlan.io
+        hostSecretName: code.devlan.io
+        devurlsHostSecretName: code.devlan.io
 
     ingress:
       enable: true
-      host: "coder.devlan.io"
-      tls:
-        enabled: true
+      host: "code.devlan.io"
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
         kubernetes.io/ingress.class: nginx
